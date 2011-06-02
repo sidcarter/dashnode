@@ -1,6 +1,6 @@
 var http = require('http'),
 	sys = require('sys'),
-	slave = require('./functions');
+	slave = require('./slave');
 
 process.on('TypeError', function(e) {
 	console.log(e);
