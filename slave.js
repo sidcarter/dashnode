@@ -7,7 +7,6 @@ function respond(request,response){
 	response.writeHead(200,{
 		'Content-type': 'text/html'
 	});
-	console.log(request.headers);
 
 	route(request);
 
@@ -19,7 +18,7 @@ function respond(request,response){
 }
 
 function route(request){
-	console.log('Connection from: ' + request.socket.remoteAddress + ' for url: ' + request.url);
+	console.log('Connection from: ' + request.headers['x-real-ip'] + ' for url: ' + request.url);
 }
 
 exports.respond = respond;
