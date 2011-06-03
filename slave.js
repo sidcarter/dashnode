@@ -18,7 +18,7 @@ function respond(request,response){
 }
 
 function log(stream) {
-	console.log('Someone connected from: ' + stream.remoteAddress);
+	console.log('Connection from: ' + stream.remoteAddress);
 }
 
 function route(pathname){
