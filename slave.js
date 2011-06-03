@@ -7,25 +7,19 @@ function respond(request,response){
 	response.writeHead(200,{
 		'Content-type': 'text/html'
 	});
-	console.log(request);
+	console.log(request.headers);
 
-	route(request.url);
+	route(request);
 
 	response.write('Hello You!<br/>');
 	response.write('You are connecting from : ' + request.socket.remoteAddress + '<br/>');
-	response.write('And trying to access the URL: ' + request.url + '<br/>');
+	response.write('to access the URL: ' + request.headers.host + request.url + '<br/>');
 	response.write('My current dir: ' + __dirname + '<br/>');
 	response.end('Running ' + process.title + ' version: ' + process.version);
 }
 
-function log(stream) {
-	console.log('Connection from: ' + stream.remoteAddress);
-}
-
-function route(pathname){
-	console.log('You are looking for path: ' + pathname);
+function route(request){
+	console.log('Connection from: ' + request.socket.remoteAddress + ' for url: ' + request.url);
 }
 
 exports.respond = respond;
-
-exports.log = log;
