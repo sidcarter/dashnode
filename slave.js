@@ -7,6 +7,7 @@ function respond(request,response){
 	response.writeHead(200,{
 		'Content-type': 'text/html'
 	});
+	console.log(request);
 
 	route(request.url);
 
