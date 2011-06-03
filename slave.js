@@ -1,8 +1,9 @@
 var url = require('url'),
-	haml = require('haml'),
+	Haml = require('hamljs'),
 	sass = require('sass'),
 	fs = require('fs');
 
+Haml.doctypes.five = '<DOCTYPE html>';
 
 function respond(request,response){
 	
@@ -23,23 +24,40 @@ function route(url, response){
 	
 	switch(path) {
 		case '' : 
+		case 'index.html' :
+		case 'index' :
 			response.writeHead(200,{
 				'Content-type': 'text/html'
 			});
-			response.end('In index');
+			response.write(renderPage('index'));
+			response.end();
 			break;
 	
 		case 'testing': 
 			response.writeHead(200,{
 				'Content-type': 'text/html'
 			});
-			response.end('In testing now');
+			response.write(renderPage(path));
+			response.end();
 			break;
 	
 		default: 
 			NotFound(url.pathname, response);
 			break;
 	}
+}
+
+function renderPage(path) {
+	var viewDir = '/view/';
+	var fileName = __dirname + viewDir + path + '.haml';
+	try {
+		var data = fs.readFileSync(fileName, 'utf8');
+		var html = Haml.render(data);
+//		console.log(fileName + data + html);
+	} catch (ex) {
+		console.log('Got ' + ex);
+	}
+	return html || '404';
 }
 
 function NotFound(pathname,response){
@@ -51,10 +69,6 @@ function NotFound(pathname,response){
 	response.write('Hello You!<br/>');
 	response.write('You want the URL: ' + pathname + ', which incidentally does not exist yet.<br/>');
 	response.end('Running ' + process.title + ' version: ' + process.version);
-}
-
-function render(pathname) {
-	
 }
 
 exports.respond = respond;

@@ -2,9 +2,9 @@ var http = require('http'),
 	sys = require('sys'),
 	slave = require('./slave');
 
-process.on('error', function(e) {
-	console.log(e);
-})
+// process.on('uncaughtException', function(e) {
+//	console.log("Got " + e);
+// })
 
 var server = http.createServer();
 
