@@ -3,6 +3,11 @@ var url = require('url'),
 	stylus = require('stylus'),
 	fs = require('fs');
 
+var viewDir = __dirname + '/../views/';
+var cssDir = viewDir + 'stylesheets/';
+var imageDir = viewDir + 'images/';
+var favicon = 'AW_Sid.jpg';
+
 function respond(request,response){
 	
 	var remoteAddress = request.headers['x-real-ip'] || request.socket.remoteAddress;
@@ -38,6 +43,18 @@ function route(url, response){
 			response.end();
 			break;
 
+		case 'favicon.ico':
+			response.writeHead(200,{
+				'Content-type': 'image/jpeg'
+			})
+			response.end(fs.readFile(imageDir + favicon, function(err, data) {
+				if (err) {
+					console.log(err.stack);
+				}
+				return data;
+			}));
+			break;
+
 		case 'testing': 
 			response.writeHead(200,{
 				'Content-type': 'text/html'
@@ -53,8 +70,7 @@ function route(url, response){
 }
 
 function renderPage(path) {
-	var viewDir = '/../views/';
-	var fileName = __dirname + viewDir + path + '.jade';
+	var fileName = viewDir + path + '.jade';
 	try {
 		var data = fs.readFileSync(fileName, 'utf8');
 		var html = jade.render(data);
@@ -66,17 +82,16 @@ function renderPage(path) {
 }
 
 function renderCss(path) {
-	var cssDir = '/../views/stylesheets/';
-	var fileName = __dirname + cssDir + path + '.styl';
+	var fileName = cssDir + path + '.styl';
 	try {
 		var data = fs.readFileSync(fileName, 'utf8');
 		stylus.render(data, {filename: path + '.styl'}, function(err,css){
-			fs.writeFileSync(__dirname + cssDir + path, css);
+			fs.writeFileSync(cssDir + path, css);
 		});
 	} catch (ex) {
 		console.log(ex.stack);
 	}
-	return fs.readFileSync(__dirname + cssDir +path, 'utf8');
+	return fs.readFileSync(cssDir + path, 'utf8');
 }
 
 function NotFound(pathname,response){
