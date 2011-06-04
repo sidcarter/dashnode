@@ -1,6 +1,6 @@
 var http = require('http'),
 	sys = require('sys'),
-	slave = require('./controllers');
+	slave = require('./lib');
 
 // process.on('uncaughtException', function(e) {
 //	console.log("Got " + e);
