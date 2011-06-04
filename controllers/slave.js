@@ -1,9 +1,7 @@
 var url = require('url'),
-	Haml = require('hamljs'),
-	sass = require('sass'),
+	jade = require('jade'),
+	stylus = require('stylus'),
 	fs = require('fs');
-
-Haml.doctypes.five = '<DOCTYPE html>';
 
 function respond(request,response){
 	
@@ -48,11 +46,11 @@ function route(url, response){
 }
 
 function renderPage(path) {
-	var viewDir = '/view/';
-	var fileName = __dirname + viewDir + path + '.haml';
+	var viewDir = '/../views/';
+	var fileName = __dirname + viewDir + path + '.jade';
 	try {
 		var data = fs.readFileSync(fileName, 'utf8');
-		var html = Haml.render(data);
+		var html = jade.render(data);
 //		console.log(fileName + data + html);
 	} catch (ex) {
 		console.log('Got ' + ex);
