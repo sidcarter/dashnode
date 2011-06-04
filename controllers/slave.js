@@ -18,7 +18,6 @@ function route(url, response){
 
 	var pathname = url.pathname.split('/');
 	var path = pathname[1];
-	console.log('User wants to go to : ' + path);
 	
 	switch(path) {
 		case '' : 
@@ -30,7 +29,15 @@ function route(url, response){
 			response.write(renderPage('index'));
 			response.end();
 			break;
-	
+
+		case 'style.css': 
+			response.writeHead(200,{
+				'Content-type': 'text/css'
+			});
+			response.write(renderCss(path));
+			response.end();
+			break;
+
 		case 'testing': 
 			response.writeHead(200,{
 				'Content-type': 'text/html'
@@ -56,6 +63,20 @@ function renderPage(path) {
 		console.log('Got ' + ex);
 	}
 	return html || '404';
+}
+
+function renderCss(path) {
+	var cssDir = '/../views/stylesheets/';
+	var fileName = __dirname + cssDir + path + '.styl';
+	try {
+		var data = fs.readFileSync(fileName, 'utf8');
+		stylus.render(data, {filename: path + '.styl'}, function(err,css){
+			fs.writeFileSync(__dirname + cssDir + path, css);
+		});
+	} catch (ex) {
+		console.log(ex.stack);
+	}
+	return fs.readFileSync(__dirname + cssDir +path, 'utf8');
 }
 
 function NotFound(pathname,response){
