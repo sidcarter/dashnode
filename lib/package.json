@@ -1,4 +1,4 @@
 {
-	"name": "Slave functions for the dash",
-	"main": "./slave.js"
+	"name": "Functions for the dash",
+	"main": "./goblin.js"
 }
