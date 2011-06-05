@@ -1,6 +1,6 @@
 # Dashboard for sidcarter.com
 
-Should contain info about:
+Slowly coming into view
 
 * Site Status
 * My Status
