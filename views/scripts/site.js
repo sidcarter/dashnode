@@ -4,8 +4,7 @@ $(document).ready(function() {
 	$h1welcome.html('Welcome to ');
 	$h1welcome.insertBefore($h1head).fadeOut(2000, function(){
 		$('.footer').animate({
-				opacity: 0.5,
-				fontSize: "0.9em"},
-				3000);
+				opacity: 0.5},
+				2000);
 	});
 });
