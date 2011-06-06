@@ -5,5 +5,6 @@ $(document).ready(function() {
 		$('.footer').animate({
 				opacity: 0.5},
 				2000);
+		$h1head.show(2000);
 	});
 });
