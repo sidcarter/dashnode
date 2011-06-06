@@ -1,11 +1,12 @@
-var	sys = require('sys'),
+var	http = require('http'),
+	sys = require('sys'),
 	goblin = require('./lib');
 
 // process.on('uncaughtException', function(e) {
 //	console.log("Got " + e);
 // })
 
-var server = goblin.http.createServer();
+var server = http.createServer();
 
 server.on('request', goblin.respond);
 
