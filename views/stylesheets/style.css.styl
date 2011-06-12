@@ -1,5 +1,8 @@
-fonts()
-  font arguments "Helvetica Neue", Helvetica
+sansfont()
+  font arguments Calibri, "Helvetica Neue", Helvetica, "Lucida Grande", Arial
+
+serifont()
+  font arguments
 
 border-radius()
   -webkit-border-radius arguments
@@ -7,15 +10,17 @@ border-radius()
   border-radius arguments
 
 body
-  color #ffffee
-  background #000011
-  fonts 0.875em
+  color #ddeeee
+  background #211020
+  sansfont 0.875em
 
 h1
-  fonts 1.5em
+  sansfont 1.5em
+  padding-left 2%
+  margin 2% auto
 
 p.about
-  margin 5%
+  margin 1%
   fonts 
   img
     clear both
@@ -27,16 +32,15 @@ a
   color #eeeeff
   text-decoration none
 
-.head 
 .footer
-  display block
-  float left
-  padding-left 2%
+  width 40%
+  margin 1% auto
+  text-align center
 
 .container
   width 40%
   padding 1%
-  margin 2%
+  margin 1% auto
   background #555555
   color #eeffee
   border-radius 5px
