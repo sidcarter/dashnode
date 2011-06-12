@@ -2,11 +2,12 @@
 html
   head
     meta(charset='utf-8')
-    script(src='http://code.jquery.com/jquery-1.6.1.min.js')
+    script(src='/jquery-1.6.1.min.js')
     script(src='site.js')
+    link(href='http://fonts.googleapis.com/css?family=League+Script',rel='stylesheet', type='text/css')
     link(rel='stylesheet', href='/reset.css', type='text/css')
     link(rel='stylesheet', href='/style.css', type='text/css')
-    link(rel='shortcut icon', href='/AW_Sid.jpg')
+    link(rel='shortcut icon', href='/AW_Sid_small.jpg')
     title #{myTitle}
   body
     article
@@ -17,8 +18,7 @@ html
       section.container
         != body
       section.footer
-        \Copyright &copy; 2011 Sid Carter. Code resides 
-        a(title='Site Code at Github',href='http://github.com/sidcarter/dashnode') here
-        .
+        \Copyright &copy; 2011 
+        a(title='Dashboard Home', href='/') Sid Carter.
         br                
         != versions
