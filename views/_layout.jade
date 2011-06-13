@@ -10,15 +10,16 @@ html
     link(rel='shortcut icon', href='/AW_Sid_small.jpg')
     title #{myTitle}
   body
-    article
-      header
+    #page
+      header 
         h1
           a(title='home', href='/')
             span.head dash.sidcarter.com
-      section.container
-        != body
-      section.footer
-        \Copyright &copy; 2011 
-        a(title='Dashboard Home', href='/') Sid Carter.
-        br                
-        != versions
+      article
+        section.container
+          != body
+      footer.foot
+          \Copyright &copy; 2011 
+          a(title='Dashboard Home', href='/') Sid Carter.
+          br                
+          != versions
