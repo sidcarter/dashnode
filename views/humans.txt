@@ -1,0 +1,18 @@
+/* the humans responsible & colophon */
+/* humanstxt.org */
+
+
+/* TEAM */
+  CxO: Sid Carter
+  Site: http://dash.sidcarter.com/
+  Twitter: http://twitter.com/sidcarter/
+  Location: Earth
+
+/* THANKS */
+  Names (& URL): <TBD>
+
+/* SITE */
+  Standards: HTML5, CSS3
+  Components: Node.js, jQuery
+  Software: Node.js, Nginx
+  
